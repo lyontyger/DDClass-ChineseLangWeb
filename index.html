@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese Language Teacher Webapp</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <button class="language-toggle" id="languageToggle">
+            <span class="globe-icon">🌐</span>
+            <span class="language-text">中文</span>
+        </button>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search by character, pinyin, or English...">
+        </div>
+        <div class="level-filters">
+            <button class="level-btn active" data-level="all">All</button>
+            <button class="level-btn" data-level="1">LVL 1</button>
+            <button class="level-btn" data-level="2">LVL 2</button>
+            <button class="level-btn" data-level="3">LVL 3</button>
+            <button class="level-btn" data-level="4">LVL 4</button>
+            <button class="level-btn" data-level="5">LVL 5</button>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content" id="mainContent">
+        <div class="cards-container" id="cardsContainer">
+            <!-- Character cards will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="bottom-bar">
+        <div class="selected-count">
+            <span id="selectedCount">0</span> cards selected
+        </div>
+        <div class="export-buttons">
+            <button class="export-btn pdf-btn" id="pdfBtn">Save as PDF</button>
+            <button class="export-btn png-btn" id="pngBtn">Save as PNG</button>
+        </div>
+    </div>
+
+    <!-- PDF Export Modal -->
+    <div class="modal" id="pdfModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Export as PDF</h2>
+                <span class="close" data-modal="pdfModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h3>Multi-select to include:</h3>
+                <div class="toggle-options">
+                    <label class="toggle-label">
+                        <input type="checkbox" id="pdfIncludeImage" checked>
+                        <span>Image</span>
+                    </label>
+                    <label class="toggle-label">
+                        <input type="checkbox" id="pdfIncludePinyin" checked>
+                        <span>Pinyin</span>
+                    </label>
+                    <label class="toggle-label">
+                        <input type="checkbox" id="pdfIncludeCharacter" checked>
+                        <span>漢字</span>
+                    </label>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-cancel" data-modal="pdfModal">Cancel</button>
+                    <button class="btn-export" id="exportPdfBtn">Export PDF</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PNG Export Modal -->
+    <div class="modal" id="pngModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Export as PNG</h2>
+                <span class="close" data-modal="pngModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h3>Multi-select to include:</h3>
+                <div class="toggle-options">
+                    <label class="toggle-label">
+                        <input type="checkbox" id="pngIncludeImage" checked>
+                        <span>Image</span>
+                    </label>
+                    <label class="toggle-label">
+                        <input type="checkbox" id="pngIncludePinyin" checked>
+                        <span>Pinyin</span>
+                    </label>
+                    <label class="toggle-label">
+                        <input type="checkbox" id="pngIncludeCharacter" checked>
+                        <span>漢字</span>
+                    </label>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-cancel" data-modal="pngModal">Cancel</button>
+                    <button class="btn-export" id="exportPngBtn">Export PNG</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
