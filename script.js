@@ -174,6 +174,12 @@ function initializeEventListeners() {
         }
     });
 
+    document.getElementById('pptBtn').addEventListener('click', () => {
+        if (selectedCards.size > 0) {
+            showNotification('PowerPoint export feature - Coming soon!');
+        }
+    });
+
     // Modal close buttons
     document.querySelectorAll('.close, .btn-cancel').forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -187,6 +193,9 @@ function initializeEventListeners() {
 
     // Export PNG button
     document.getElementById('exportPngBtn').addEventListener('click', exportPNG);
+
+    // Export PPT button
+    document.getElementById('exportPptBtn').addEventListener('click', exportPPT);
 
     // Language toggle button
     document.getElementById('languageToggle').addEventListener('click', () => {
@@ -203,13 +212,16 @@ function updateSelectedCount() {
     document.getElementById('selectedCount').textContent = selectedCards.size;
     const pdfBtn = document.getElementById('pdfBtn');
     const pngBtn = document.getElementById('pngBtn');
+    const pptBtn = document.getElementById('pptBtn');
 
     if (selectedCards.size === 0) {
         pdfBtn.disabled = true;
         pngBtn.disabled = true;
+        pptBtn.disabled = true;
     } else {
         pdfBtn.disabled = false;
         pngBtn.disabled = false;
+        pptBtn.disabled = false;
     }
 }
 
@@ -462,6 +474,133 @@ async function exportPNG() {
 
     showNotification(`${selectedCardsData.length} PNG files exported successfully!`);
     closeModal('pngModal');
+}
+
+// Export PPT function
+async function exportPPT() {
+    const includeImage = document.getElementById('pptIncludeImage').checked;
+    const includeCharacter = document.getElementById('pptIncludeCharacter').checked;
+    const includePinyin = document.getElementById('pptIncludePinyin').checked;
+
+    if (!includeImage && !includeCharacter && !includePinyin) {
+        alert('Please select at least one element to include in the export.');
+        return;
+    }
+
+    const selectedCardsData = charactersData.filter(card => selectedCards.has(card.id));
+
+    try {
+        // Check if pptxgen is available
+        if (typeof pptxgen === 'undefined') {
+            throw new Error('PowerPoint library not loaded. Please refresh the page.');
+        }
+
+        // Create new PowerPoint presentation
+        const pptx = new pptxgen();
+
+        // Set presentation properties
+        pptx.defineLayout({ name: 'CUSTOM', width: 10, height: 5.625 });
+        pptx.layout = 'CUSTOM';
+        pptx.author = 'Chinese Language Teacher Webapp';
+        pptx.title = 'Chinese Character Cards';
+
+        // Add a slide for each selected card
+        for (const card of selectedCardsData) {
+            const slide = pptx.addSlide();
+
+            // Set slide background
+            slide.background = { color: 'FFFFFF' };
+
+            let yPosition = 1.0;
+
+            // Add image if selected
+            if (includeImage) {
+                try {
+                    // Convert image to base64
+                    const response = await fetch(card.image);
+                    if (!response.ok) {
+                        throw new Error(`Failed to fetch image: ${response.statusText}`);
+                    }
+                    const blob = await response.blob();
+                    const base64 = await new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.onloadend = () => resolve(reader.result);
+                        reader.onerror = reject;
+                        reader.readAsDataURL(blob);
+                    });
+
+                    slide.addImage({
+                        data: base64,
+                        x: 2.5,
+                        y: yPosition,
+                        w: 5.0,
+                        h: 3.0
+                    });
+
+                    yPosition += 3.3;
+                } catch (error) {
+                    console.error(`Error loading image for ${card.character}:`, error);
+                    // Continue without the image rather than failing
+                }
+            }
+
+            // Add character if selected
+            if (includeCharacter) {
+                slide.addText(card.character, {
+                    x: 0.5,
+                    y: yPosition,
+                    w: 9.0,
+                    h: 0.8,
+                    fontSize: 60,
+                    bold: true,
+                    align: 'center',
+                    color: '000000'
+                });
+                yPosition += 0.9;
+            }
+
+            // Add pinyin if selected
+            if (includePinyin) {
+                slide.addText(card.pinyin, {
+                    x: 0.5,
+                    y: yPosition,
+                    w: 9.0,
+                    h: 0.6,
+                    fontSize: 36,
+                    align: 'center',
+                    color: '666666'
+                });
+                yPosition += 0.7;
+            }
+
+            // Add English translation (always included)
+            slide.addText(card.english, {
+                x: 0.5,
+                y: yPosition,
+                w: 9.0,
+                h: 0.5,
+                fontSize: 24,
+                align: 'center',
+                color: '888888'
+            });
+        }
+
+        // Save the presentation
+        pptx.writeFile('chinese-characters.pptx')
+            .then(() => {
+                showNotification('PowerPoint exported successfully!');
+                closeModal('pptModal');
+            })
+            .catch((saveError) => {
+                console.error('PPT save error:', saveError);
+                alert(`Error saving PowerPoint: ${saveError.message}`);
+                closeModal('pptModal');
+            });
+    } catch (error) {
+        console.error('PPT export error:', error);
+        alert(`Error exporting PowerPoint: ${error.message}\n\nPlease check the console for more details.`);
+        closeModal('pptModal');
+    }
 }
 
 // Add CSS animations
