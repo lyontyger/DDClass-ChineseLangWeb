@@ -337,12 +337,12 @@ body {
     color: #333;
 }
 
-.pdf-btn:hover, .png-btn:hover {
+.pdf-btn:hover, .png-btn:hover, .ppt-btn:hover {
     background-color: #D4AF87;
     color: white;
 }
 
-.pdf-btn:disabled, .png-btn:disabled {
+.pdf-btn:disabled, .png-btn:disabled, .ppt-btn:disabled {
     background-color: #e0e0e0;
     border-color: #ccc;
     color: #999;
