@@ -1,40 +1,41 @@
 // Character data - TOCFL Levels 1-4
 const charactersData = [
     // Level 1
-    { id: 1, character: '坐', pinyin: 'zuò', english: 'sit', level: 1, image: 'character-card-images/Level1/坐.png' },
-    { id: 2, character: '火車', pinyin: 'huǒ chē', english: 'train', level: 1, image: 'character-card-images/Level1/火車.png' },
-    { id: 3, character: '跟', pinyin: 'gēn', english: 'follow / with', level: 1, image: 'character-card-images/Level1/跟.png' },
-    { id: 4, character: '玩', pinyin: 'wán', english: 'play', level: 1, image: 'character-card-images/Level1/玩.png' },
-    { id: 5, character: '快', pinyin: 'kuài', english: 'fast', level: 1, image: 'character-card-images/Level1/快.png' },
-    { id: 6, character: '站', pinyin: 'zhàn', english: 'stand / station', level: 1, image: 'character-card-images/Level1/站.png' },
-    { id: 7, character: '鐘頭', pinyin: 'zhōng tóu', english: 'hour', level: 1, image: 'character-card-images/Level1/鐘頭.png' },
-    { id: 8, character: '比較', pinyin: 'bǐ jiào', english: 'compare / relatively', level: 1, image: 'character-card-images/Level1/比較.png' },
-    { id: 9, character: '慢', pinyin: 'màn', english: 'slow', level: 1, image: 'character-card-images/Level1/慢.png' },
-    { id: 10, character: '舒服', pinyin: 'shū fu', english: 'comfortable', level: 1, image: 'character-card-images/Level1/舒服.png' },
-    { id: 11, character: '車票', pinyin: 'chē piào', english: 'ticket', level: 1, image: 'character-card-images/Level1/車票.png' },
-    { id: 12, character: '高鐵', pinyin: 'gāo tiě', english: 'high-speed rail', level: 1, image: 'character-card-images/Level1/高鐵.png' },
+    { id: 1, character: '坐', pinyin: 'zuò', english: 'sit', level: 1, partOfSpeech: ['verb'], image: 'character-card-images/Level1/坐.png' },
+    { id: 2, character: '火車', pinyin: 'huǒ chē', english: 'train', level: 1, partOfSpeech: ['noun'], image: 'character-card-images/Level1/火車.png' },
+    { id: 3, character: '跟', pinyin: 'gēn', english: 'follow / with', level: 1, partOfSpeech: ['verb', 'preposition'], image: 'character-card-images/Level1/跟.png' },
+    { id: 4, character: '玩', pinyin: 'wán', english: 'play', level: 1, partOfSpeech: ['verb'], image: 'character-card-images/Level1/玩.png' },
+    { id: 5, character: '快', pinyin: 'kuài', english: 'fast', level: 1, partOfSpeech: ['adjective'], image: 'character-card-images/Level1/快.png' },
+    { id: 6, character: '站', pinyin: 'zhàn', english: 'stand / station', level: 1, partOfSpeech: ['verb', 'noun'], image: 'character-card-images/Level1/站.png' },
+    { id: 7, character: '鐘頭', pinyin: 'zhōng tóu', english: 'hour', level: 1, partOfSpeech: ['noun'], image: 'character-card-images/Level1/鐘頭.png' },
+    { id: 8, character: '比較', pinyin: 'bǐ jiào', english: 'compare / relatively', level: 1, partOfSpeech: ['verb', 'adverb'], image: 'character-card-images/Level1/比較.png' },
+    { id: 9, character: '慢', pinyin: 'màn', english: 'slow', level: 1, partOfSpeech: ['adjective'], image: 'character-card-images/Level1/慢.png' },
+    { id: 10, character: '舒服', pinyin: 'shū fu', english: 'comfortable', level: 1, partOfSpeech: ['adjective'], image: 'character-card-images/Level1/舒服.png' },
+    { id: 11, character: '車票', pinyin: 'chē piào', english: 'ticket', level: 1, partOfSpeech: ['noun'], image: 'character-card-images/Level1/車票.png' },
+    { id: 12, character: '高鐵', pinyin: 'gāo tiě', english: 'high-speed rail', level: 1, partOfSpeech: ['noun'], image: 'character-card-images/Level1/高鐵.png' },
 
     // Level 2
-    { id: 13, character: '壞了', pinyin: 'huài le', english: 'broken', level: 2, image: 'character-card-images/Level2/壞了.png' },
-    { id: 14, character: '東部', pinyin: 'dōng bù', english: 'eastern part', level: 2, image: 'character-card-images/Level2/東部.png' },
-    { id: 15, character: '準備', pinyin: 'zhǔn bèi', english: 'prepare', level: 2, image: 'character-card-images/Level2/準備.png' },
+    { id: 13, character: '壞了', pinyin: 'huài le', english: 'broken', level: 2, partOfSpeech: ['adjective'], image: 'character-card-images/Level2/壞了.png' },
+    { id: 14, character: '東部', pinyin: 'dōng bù', english: 'eastern part', level: 2, partOfSpeech: ['noun'], image: 'character-card-images/Level2/東部.png' },
+    { id: 15, character: '準備', pinyin: 'zhǔn bèi', english: 'prepare', level: 2, partOfSpeech: ['verb'], image: 'character-card-images/Level2/準備.png' },
 
     // Level 3
-    { id: 16, character: '季節', pinyin: 'jì jié', english: 'season', level: 3, image: 'character-card-images/Level3/季節.png' },
-    { id: 17, character: '記者', pinyin: 'jì zhě', english: 'reporter / journalist', level: 3, image: 'character-card-images/Level3/記者.png' },
+    { id: 16, character: '季節', pinyin: 'jì jié', english: 'season', level: 3, partOfSpeech: ['noun'], image: 'character-card-images/Level3/季節.png' },
+    { id: 17, character: '記者', pinyin: 'jì zhě', english: 'reporter / journalist', level: 3, partOfSpeech: ['noun'], image: 'character-card-images/Level3/記者.png' },
 
     // Level 4
-    { id: 18, character: '影本', pinyin: 'yǐng běn', english: 'photocopy', level: 4, image: 'character-card-images/Level4/影本.png' },
-    { id: 19, character: '插花', pinyin: 'chā huā', english: 'flower arrangement', level: 4, image: 'character-card-images/Level4/插花.png' },
+    { id: 18, character: '影本', pinyin: 'yǐng běn', english: 'photocopy', level: 4, partOfSpeech: ['noun'], image: 'character-card-images/Level4/影本.png' },
+    { id: 19, character: '插花', pinyin: 'chā huā', english: 'flower arrangement', level: 4, partOfSpeech: ['noun', 'verb'], image: 'character-card-images/Level4/插花.png' },
 
     // Level 5
-    { id: 20, character: '種植', pinyin: 'zhòng zhí', english: 'plant / cultivate', level: 5, image: 'character-card-images/Level5/種植.png' },
-    { id: 21, character: '編織', pinyin: 'biān zhī', english: 'weave / knit', level: 5, image: 'character-card-images/Level5/編織.png' }
+    { id: 20, character: '種植', pinyin: 'zhòng zhí', english: 'plant / cultivate', level: 5, partOfSpeech: ['verb'], image: 'character-card-images/Level5/種植.png' },
+    { id: 21, character: '編織', pinyin: 'biān zhī', english: 'weave / knit', level: 5, partOfSpeech: ['verb'], image: 'character-card-images/Level5/編織.png' }
 ];
 
 // State
 let selectedCards = new Set();
 let currentFilter = 'all';
+let currentPosFilter = 'all';
 let searchQuery = '';
 
 // Initialize
@@ -52,13 +53,16 @@ function renderCards() {
         // Filter by level
         const levelMatch = currentFilter === 'all' || card.level === parseInt(currentFilter);
 
+        // Filter by part of speech
+        const posMatch = currentPosFilter === 'all' || card.partOfSpeech.includes(currentPosFilter);
+
         // Filter by search query
         const searchMatch = searchQuery === '' ||
             card.character.includes(searchQuery) ||
             card.pinyin.toLowerCase().includes(searchQuery.toLowerCase()) ||
             card.english.toLowerCase().includes(searchQuery.toLowerCase());
 
-        return levelMatch && searchMatch;
+        return levelMatch && posMatch && searchMatch;
     });
 
     filteredCards.forEach(card => {
@@ -73,6 +77,11 @@ function createCardElement(card) {
     cardDiv.className = 'character-card';
     cardDiv.dataset.id = card.id;
 
+    // Create part of speech tags
+    const posTagsHTML = card.partOfSpeech.map(pos =>
+        `<span class="pos-tag pos-${pos}">${pos}</span>`
+    ).join('');
+
     cardDiv.innerHTML = `
         <input type="checkbox" class="card-checkbox" data-id="${card.id}" ${selectedCards.has(card.id) ? 'checked' : ''}>
         <div class="card-image">
@@ -81,6 +90,7 @@ function createCardElement(card) {
         <div class="card-character">${card.character}</div>
         <div class="card-pinyin">${card.pinyin}</div>
         <div class="card-english">${card.english}</div>
+        <div class="card-pos">${posTagsHTML}</div>
         <div class="card-level">TOCFL Level ${card.level}</div>
         <div class="card-actions">
             <button class="copy-btn copy-character" data-id="${card.id}">Copy 字</button>
@@ -107,6 +117,16 @@ function initializeEventListeners() {
             document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
             e.target.classList.add('active');
             currentFilter = e.target.dataset.level;
+            renderCards();
+        });
+    });
+
+    // Part of speech filter buttons
+    document.querySelectorAll('.pos-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            document.querySelectorAll('.pos-btn').forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            currentPosFilter = e.target.dataset.pos;
             renderCards();
         });
     });
