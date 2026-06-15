@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
 </head>
 <body>
     <!-- Top Bar -->
@@ -50,7 +51,8 @@
         </div>
         <div class="export-buttons">
             <button class="export-btn pdf-btn" id="pdfBtn">Save as PDF</button>
-            <button class="export-btn png-btn" id="pngBtn">Save as PNG</button>
+            <button class="export-btn png-btn" id="pngBtn">Save as PNGs</button>
+            <button class="export-btn ppt-btn" id="pptBtn">Save as PPT</button>
         </div>
     </div>
 
@@ -89,7 +91,7 @@
     <div class="modal" id="pngModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Export as PNG</h2>
+                <h2>Export as PNGs</h2>
                 <span class="close" data-modal="pngModal">&times;</span>
             </div>
             <div class="modal-body">
@@ -111,6 +113,37 @@
                 <div class="modal-footer">
                     <button class="btn-cancel" data-modal="pngModal">Cancel</button>
                     <button class="btn-export" id="exportPngBtn">Export PNG</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PPT Export Modal -->
+    <div class="modal" id="pptModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Export as PowerPoint</h2>
+                <span class="close" data-modal="pptModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h3>Multi-select to include:</h3>
+                <div class="toggle-options">
+                    <label class="toggle-label">
+                        <input type="checkbox" id="pptIncludeImage" checked>
+                        <span>Image</span>
+                    </label>
+                    <label class="toggle-label">
+                        <input type="checkbox" id="pptIncludePinyin" checked>
+                        <span>Pinyin</span>
+                    </label>
+                    <label class="toggle-label">
+                        <input type="checkbox" id="pptIncludeCharacter" checked>
+                        <span>漢字</span>
+                    </label>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-cancel" data-modal="pptModal">Cancel</button>
+                    <button class="btn-export" id="exportPptBtn">Export PPT</button>
                 </div>
             </div>
         </div>
