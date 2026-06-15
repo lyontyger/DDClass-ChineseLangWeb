@@ -99,6 +99,36 @@ body {
     border-color: #D4AF87;
 }
 
+/* Part of Speech Filters */
+.pos-filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.pos-btn {
+    padding: 8px 16px;
+    background-color: #FFF8ED;
+    border: 1px solid #D4AF87;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.pos-btn:hover {
+    background-color: #F5E6D3;
+}
+
+.pos-btn.active {
+    background-color: #D4AF87;
+    color: white;
+    border-color: #D4AF87;
+}
+
+
 /* Main Content */
 .main-content {
     position: fixed;
